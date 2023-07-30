@@ -9,7 +9,7 @@ interface INewsFC {
 }
 
 const News: React.FC<INewsFC> = ({ id, idx }) => {
-  const { data } = useGetNewsItem(id);
+  const { data } = useGetNewsItem(id.toString());
   return (
     <Root>
       <Number>{++idx}</Number>
