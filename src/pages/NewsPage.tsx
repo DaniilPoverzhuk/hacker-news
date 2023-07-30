@@ -43,7 +43,7 @@ const Root = styled.div`
 const BtnToHome = styled(Link)`
   position: absolute;
   top: -35px;
-  left: -29px;
+  left: 0;
   font-size: 30px;
 
   svg {
