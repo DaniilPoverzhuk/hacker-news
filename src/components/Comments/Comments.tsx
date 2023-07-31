@@ -30,4 +30,12 @@ const Root = styled.ul`
   ul {
     margin-left: 25px;
   }
+
+  a {
+    color: #0068c4;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
