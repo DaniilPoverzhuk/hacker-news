@@ -14,7 +14,10 @@ const ListNews: React.FC = () => {
   }
   return (
     <Root>
-      <ButtonUpdate mutate={mutate} />
+      <ButtonUpdate
+        mutate={mutate}
+        home
+      />
       {data?.map((item, idx) => (
         <Link
           to={`/news/${item}`}

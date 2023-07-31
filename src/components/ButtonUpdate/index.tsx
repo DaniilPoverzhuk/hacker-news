@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import styled from 'styled-components';
 import { KeyedMutator } from 'swr';
@@ -6,9 +7,10 @@ import { RxUpdate as Update } from 'react-icons/rx';
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   mutate: KeyedMutator<any>;
+  home?: boolean;
 }
 
-const ButtonUpdate: React.FC<Props> = ({ mutate, ...props }) => {
+const ButtonUpdate: React.FC<Props> = ({ mutate, home }) => {
   const updateComments = () => {
     mutate();
   };
@@ -16,7 +18,7 @@ const ButtonUpdate: React.FC<Props> = ({ mutate, ...props }) => {
   return (
     <BtnUpdate
       onClick={updateComments}
-      {...props}
+      home={home!}
     >
       <Update />
       Update Comments
@@ -26,10 +28,10 @@ const ButtonUpdate: React.FC<Props> = ({ mutate, ...props }) => {
 
 export default ButtonUpdate;
 
-const BtnUpdate = styled.button`
+const BtnUpdate = styled.button<{ home: boolean }>`
   position: absolute;
   top: -35px;
-  left: 0;
+  left: ${({ home }) => (home ? '0' : '50px')};
   display: flex;
   align-items: center;
   gap: 5px;
