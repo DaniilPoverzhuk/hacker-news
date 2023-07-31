@@ -22,7 +22,10 @@ const NewsPage: React.FC = () => {
       <BtnToHome to={PAGES.HOME}>
         <ArrowRight />
       </BtnToHome>
-      <BtnUpdate mutate={mutate} />
+      <BtnUpdate
+        mutate={mutate}
+        style={{ left: '50px' }}
+      />
       <Title>{data?.title}</Title>
       <LinkText>
         Link to the news: <LinkNews href={data?.url}>{data?.url}</LinkNews>

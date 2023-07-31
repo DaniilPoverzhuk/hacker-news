@@ -8,12 +8,16 @@ interface Props {
   mutate: KeyedMutator<any>;
 }
 
-const ButtonUpdate: React.FC<Props> = ({ mutate }) => {
+const ButtonUpdate: React.FC<Props> = ({ mutate, ...props }) => {
   const updateComments = () => {
     mutate();
   };
+
   return (
-    <BtnUpdate onClick={updateComments}>
+    <BtnUpdate
+      onClick={updateComments}
+      {...props}
+    >
       <Update />
       Update Comments
     </BtnUpdate>
