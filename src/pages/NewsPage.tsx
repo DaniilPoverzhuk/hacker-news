@@ -2,17 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
 import { format } from 'date-fns';
+
 import { BsArrowLeft as ArrowRight } from 'react-icons/bs';
 
 import PAGES from '@/routes';
 
 import useGetNewsItem from '@/hooks/useGetNewsItem';
 
-import Comments from '../components/Comments/Comments';
+import Comments from '@/components/Comments/Comments';
+import BtnUpdate from '@/components/ButtonUpdate';
 
 const NewsPage: React.FC = () => {
   const { id } = useParams();
-  const { data } = useGetNewsItem(id!);
+  const { data, mutate } = useGetNewsItem(id!);
   const getDate = (time: number) => time && format(time, 'PP');
 
   return (
@@ -20,6 +22,7 @@ const NewsPage: React.FC = () => {
       <BtnToHome to={PAGES.HOME}>
         <ArrowRight />
       </BtnToHome>
+      <BtnUpdate mutate={mutate} />
       <Title>{data?.title}</Title>
       <LinkText>
         Link to the news: <LinkNews href={data?.url}>{data?.url}</LinkNews>
@@ -43,10 +46,15 @@ const Root = styled.div`
 const BtnToHome = styled(Link)`
   position: absolute;
   top: -35px;
-  left: 0;
-  font-size: 30px;
+
+  transition: 0.4s;
+
+  &:hover {
+    opacity: 0.5;
+  }
 
   svg {
+    font-size: 25px;
     fill: ${({ theme }) => theme.primary};
   }
 `;
