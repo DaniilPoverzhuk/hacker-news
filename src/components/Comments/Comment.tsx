@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import styled from 'styled-components';
 import { IoCaretDown } from 'react-icons/io5';
 
 import { INews } from '@/types';
 
-import ReplyComment from './ReplyCommet';
+import ReplyComment from './ReplyComment';
 
 interface Props {
   comment: INews;
 }
 
 const Comment: React.FC<Props> = ({ comment }) => {
-  const [isVisibleRepliesComments, setIsVisibleRepliesComments] =
-    useState(false);
-
-  const toggleVisibleRepliesComments = () => {
-    setIsVisibleRepliesComments(!isVisibleRepliesComments);
-  };
+  const [isVisibleRepliesComments, toggleVisibleRepliesComments] = useReducer(
+    currentState => !currentState,
+    false
+  );
 
   return (
     <>

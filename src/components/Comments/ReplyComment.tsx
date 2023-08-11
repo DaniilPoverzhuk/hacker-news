@@ -16,9 +16,9 @@ const ReplyComment: React.FC<Props> = ({ comments }) => {
           <Info>
             {comment.user} | {comment.time_ago}
           </Info>
-          {comment.comments && comment.comments.length ? (
+          {comment.comments && comment.comments.length && (
             <ReplyComment comments={comment.comments} />
-          ) : null}
+          )}
         </li>
       ))}
     </ul>

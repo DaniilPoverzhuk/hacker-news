@@ -1,11 +1,7 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
-interface IContainer {
-  children?: React.ReactNode;
-}
-
-const Container: React.FC<IContainer> = ({ children }) => {
+const Container: React.FC<PropsWithChildren> = ({ children }) => {
   return <Root>{children}</Root>;
 };
 

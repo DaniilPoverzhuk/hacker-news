@@ -9,7 +9,5 @@ export default () => {
       refreshInterval: 60000,
     }
   );
-
-  console.log(data);
   return { data, isLoading, mutate };
 };
